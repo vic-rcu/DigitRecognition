@@ -1,5 +1,5 @@
 import torch
-from models.network import LeNet1989
+from models.LeNet1989 import LeNet1989
 
 def test_LeNet1989():
     net = LeNet1989()

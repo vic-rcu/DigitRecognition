@@ -2,6 +2,8 @@ import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import ndimage
+import torch
+from torch.utils.data import TensorDataset
 
 
 def get_prepared_data():
@@ -41,7 +43,26 @@ def get_prepared_data():
 
     return (new_train, y_train), (new_test, y_test)
 
+
+def create_dataset(images, lables):
+    """
+    Creates a PyTorch Dataset used for the the training process
+
+    Params:
+        images: NumPy Array of Image Data
+        lables: NumPy Array of Lables
+    
+    Returns:
+        TensorDataset: Dataset of the passed arguments
+    """
+    
+    image_tensor = torch.from_numpy(images).float().unsqueeze(1)
+    lable_tensor = torch.from_numpy(lables).long()
+    return TensorDataset(image_tensor, lable_tensor)
+
+
 def display_digit(image_set, lable_set, index):
+    """displays the image at given index and its lable"""
     plt.imshow(image_set[index], cmap="gray")
     plt.title(lable_set[index])
     plt.show()

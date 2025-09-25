@@ -1,4 +1,4 @@
 {
-  "python.defaultInterpreterPath": "/opt/anaconda3/envs/6.86x311"
-
+  "python.defaultInterpreterPath": "/opt/anaconda3/envs/6.86x311",
+  "python.REPL.enableREPLSmartSend": false
 }
