@@ -6,10 +6,18 @@ import torch
 from torch.utils.data import TensorDataset
 
 
+def get_MNIST():
+    """ Gets the MNIST-Dataset and returns NumPy Arrays of images and lables """
+    (x_train, y_train), (x_test, y_test) =  tf.keras.datasets.mnist.load_data()
+    return (x_train, y_train), (x_test, y_test)
+
+
+
 def get_prepared_data():
     """
     Loads and resizes the 28x28 MNIST images to 16x16 to match the data as described in the paper. Resized images are then ebedded into a 28x28 image for better performance in convolution. 
     Training set consists of 60,000 images and lables. Test set consists of 10,000 images and lables. The data is returned as a NumPy Array.
+    Returned data for reproduction training on LeNet18989
 
     Returns:
         (x_train, y_train), (x_test, y_test): Prepared images and labels for the training and testing process.
@@ -62,10 +70,14 @@ def create_dataset(images, lables):
 
 
 def display_digit(image_set, lable_set, index):
-    """displays the image at given index and its lable"""
+    """ Displays the image at given index and its lable """
     plt.imshow(image_set[index], cmap="gray")
     plt.title(lable_set[index])
     plt.show()
+
+
+
+
 
 
 
